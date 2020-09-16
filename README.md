@@ -4,7 +4,7 @@
 
 An E Commerce Web using Vue.js
 
-## :link: Demo : https://liang10339.github.io/ecommerce-vuejs/
+## :link: Demo : https://liang10339.github.io/ecommerce-dessert/
 
 ## ⛏️ Tools
 - Vue.js 2.6.11
