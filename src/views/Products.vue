@@ -29,7 +29,7 @@
               :key="item.id"
             >
               <div class="card h-100 rounded-0">
-                <router-link :to="`/product/${ item.id }`">
+                <router-link :to="`/detail/${ item.id }`">
                   <div
                     style="
                     height: 180px;
@@ -42,7 +42,7 @@
                 </router-link>
                 <div class="card-body">
                   <span class="badge badge-secondary float-right ml-2">{{ item.category }}</span>
-                  <router-link :to="`/product/${ item.id }`">
+                  <router-link :to="`/detail/${ item.id }`">
                     <h5 class="card-title font-weight-bold text-brown">{{ item.title }}</h5>
                   </router-link>
                   <p class="card-text">{{ item.description }}</p>
@@ -100,7 +100,6 @@ export default {
         .ref("data")
         .once("value", function (snapshot) {
           if (snapshot.exists()) {
-            console.log(Object.prototype.toString.call(snapshot));
             //this.products = Object.keys(snapshot.val());
             snapshot.forEach(function (d) {
               products.push(d.val());
