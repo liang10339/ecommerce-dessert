@@ -7,7 +7,7 @@ An E Commerce Web using Vue.js
 ## :link: Demo : https://liang10339.github.io/ecommerce-vuejs/
 
 ## ⛏️ Tools
-- Vue,js2.6.11
+- Vue.js 2.6.11
 - bootstrap 4.5.2
 - sass 1.26.5
 - vue-cli 4.5.0
