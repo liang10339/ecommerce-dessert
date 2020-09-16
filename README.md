@@ -1,4 +1,4 @@
-# ec-dessert
+# ecommerce-dessert
 
 ## Intro
 
