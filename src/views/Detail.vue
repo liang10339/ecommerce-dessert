@@ -44,7 +44,7 @@
               </div>
               <div class="d-flex">
                 <div class="w-50 mr-3">
-                  <select name="unit" class="form-control mr-3 rounded-0" v-model="products.id">
+                  <select name="unit" class="form-control mr-3 rounded-0" v-model="products.num">
                     <option :value="num" v-for="num in 5" :key="num">{{ num }} </option>
                   </select>
                 </div>
@@ -89,7 +89,6 @@ export default {
   methods: {
     getProducts() {
       let vm = this;
-      let products = [];
       const { id } = this.$route.params;
       this.isLoading = true;
       fire
@@ -97,13 +96,8 @@ export default {
         .ref(`data/${id}`)
         .once("value", function (snapshot) {
           if (snapshot.exists()) {
-             snapshot.forEach(function (d) {
-               products.push(d.val());
-             });
             vm.products = snapshot.val();
             vm.isLoading = false;
-            console.log(products);
-
           } else {
             Toast.fire({
               title: "無法取得資料，稍後再試",
@@ -113,26 +107,8 @@ export default {
           }
           
         });
-      const { categoryName } = this.$route.params;
-      if (categoryName) {
-        this.filterCategory = categoryName;
-      }
     },
     addToCart() {},
-  },
-
-  computed: {
-    filterCategories() {
-      if (this.filterCategory) {
-        return this.products.filter((item) => {
-          const data = item.category
-            .toLowerCase()
-            .includes(this.filterCategory.toLowerCase());
-          return data;
-        });
-      }
-      return this.products;
-    },
   },
 };
 </script>
