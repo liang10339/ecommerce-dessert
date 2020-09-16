@@ -34,16 +34,16 @@
 </template>
 
 <script>
-//import Cart from "./Cart.vue";
+// import Cart from "./Cart.vue";
 
 export default {
-  data() {
-    return {};
+  data () {
+    return {}
   },
   components: {
-    //Cart,
-  },
-};
+    // Cart,
+  }
+}
 </script>
 
 <style>

@@ -1,7 +1,7 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const routes = [
   {
@@ -10,7 +10,7 @@ const routes = [
     children: [
       {
         path: '',
-        component: () => import('../views/Home.vue'),
+        component: () => import('../views/Home.vue')
       },
       {
         path: 'products',
@@ -22,22 +22,22 @@ const routes = [
         name: 'detail',
         component: () => import('../views/Detail.vue')
       }
-    ],
+    ]
   },
 
   {
     path: '*',
     name: 'not-found',
-    component: () => import('../views/NotFound.vue'),
-  },
-];
+    component: () => import('../views/NotFound.vue')
+  }
+]
 
 const router = new VueRouter({
   linkExactActiveClass: 'active',
-  scrollBehavior() {
-    return { x: 0, y: 0 };
+  scrollBehavior () {
+    return { x: 0, y: 0 }
   },
-  routes,
-});
+  routes
+})
 
-export default router;
+export default router

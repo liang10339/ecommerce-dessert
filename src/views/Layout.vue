@@ -10,20 +10,20 @@
 </template>
 
 <script>
-import Navbar from "@/components/Navbar.vue";
-import Footer from "@/components/Footer.vue";
-//import Cart from "@/components/Cart.vue";
+import Navbar from '@/components/Navbar.vue'
+import Footer from '@/components/Footer.vue'
+// import Cart from "@/components/Cart.vue";
 
 export default {
-  data() {
-    return {};
+  data () {
+    return {}
   },
   components: {
     Navbar,
-    Footer,
-    //Cart,
-  },
-};
+    Footer
+    // Cart,
+  }
+}
 </script>
 
 <style>

@@ -71,16 +71,16 @@
 
 <script>
 export default {
-  data() {
-    return {};
+  data () {
+    return {}
   },
   methods: {
-    toCategory(Name) {
+    toCategory (Name) {
       this.$router.push({
-        name: "products",
-        params: { categoryName: Name },
-      });
-    },
-  },
-};
+        name: 'products',
+        params: { categoryName: Name }
+      })
+    }
+  }
+}
 </script>

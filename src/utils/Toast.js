@@ -1,4 +1,4 @@
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2'
 
 export default (
   Swal.mixin({
@@ -6,6 +6,6 @@ export default (
     showConfirmButton: false,
     timer: 1500,
     padding: '1em',
-    position: 'top',
+    position: 'top'
   })
-);
+)

@@ -70,70 +70,69 @@
 </template>
 
 <script>
-import Toast from "@/utils/Toast";
-import fire from "../firebase";
+import Toast from '@/utils/Toast'
+import fire from '../firebase'
 
 export default {
-  data() {
+  data () {
     return {
       status: {
-        loadingItem: "",
+        loadingItem: ''
       },
       products: [],
       carts: [],
-      categories: ["甜點", "蛋糕", "餅乾"],
-      filterCategory: "",
+      categories: ['甜點', '蛋糕', '餅乾'],
+      filterCategory: '',
       isLoading: false,
-      isProcessing: false,
-    };
+      isProcessing: false
+    }
   },
 
-  created() {
-    this.getProducts();
+  created () {
+    this.getProducts()
   },
   methods: {
-    getProducts() {
-      let vm = this;
-      let products = [];
+    getProducts () {
+      const vm = this
+      const products = []
       fire
         .database()
-        .ref("data")
-        .once("value", function (snapshot) {
+        .ref('data')
+        .once('value', function (snapshot) {
           if (snapshot.exists()) {
-            //this.products = Object.keys(snapshot.val());
+            // this.products = Object.keys(snapshot.val());
             snapshot.forEach(function (d) {
-              products.push(d.val());
-            });
-            vm.products = products;
+              products.push(d.val())
+            })
+            vm.products = products
           } else {
             Toast.fire({
-              title: "無法取得資料，稍後再試",
-              icon: "error",
-            });
-            this.isLoading = false;
+              title: '無法取得資料，稍後再試',
+              icon: 'error'
+            })
+            this.isLoading = false
           }
-        });
-      const { categoryName } = this.$route.params;
+        })
+      const { categoryName } = this.$route.params
       if (categoryName) {
-        this.filterCategory = categoryName;
+        this.filterCategory = categoryName
       }
     },
-    addToCart() {},
+    addToCart () {}
   },
 
   computed: {
-    filterCategories() {
+    filterCategories () {
       if (this.filterCategory) {
         return this.products.filter((item) => {
           const data = item.category
             .toLowerCase()
-            .includes(this.filterCategory.toLowerCase());
-          return data;
-        });
+            .includes(this.filterCategory.toLowerCase())
+          return data
+        })
       }
-      return this.products;
-    },
-  },
-};
+      return this.products
+    }
+  }
+}
 </script>
-

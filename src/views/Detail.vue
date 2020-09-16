@@ -68,48 +68,46 @@
 </template>
 
 <script>
-import Toast from "@/utils/Toast";
-import fire from "../firebase";
+import Toast from '@/utils/Toast'
+import fire from '../firebase'
 
 export default {
-  data() {
+  data () {
     return {
       status: {
-        loadingItem: "",
+        loadingItem: ''
       },
       products: [],
       isLoading: false,
-      isProcessing: false,
-    };
+      isProcessing: false
+    }
   },
 
-  created() {
-    this.getProducts();
+  created () {
+    this.getProducts()
   },
   methods: {
-    getProducts() {
-      let vm = this;
-      const { id } = this.$route.params;
-      this.isLoading = true;
+    getProducts () {
+      const vm = this
+      const { id } = this.$route.params
+      this.isLoading = true
       fire
         .database()
         .ref(`data/${id}`)
-        .once("value", function (snapshot) {
+        .once('value', function (snapshot) {
           if (snapshot.exists()) {
-            vm.products = snapshot.val();
-            vm.isLoading = false;
+            vm.products = snapshot.val()
+            vm.isLoading = false
           } else {
             Toast.fire({
-              title: "無法取得資料，稍後再試",
-              icon: "error",
-            });
-            this.isLoading = false;
+              title: '無法取得資料，稍後再試',
+              icon: 'error'
+            })
+            this.isLoading = false
           }
-          
-        });
+        })
     },
-    addToCart() {},
-  },
-};
+    addToCart () {}
+  }
+}
 </script>
-

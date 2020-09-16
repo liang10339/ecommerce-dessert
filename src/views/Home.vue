@@ -8,16 +8,16 @@
 </template>
 
 <script>
-import Banner from '@/components/Banner.vue';
-import Category from '@/components/Category.vue';
+import Banner from '@/components/Banner.vue'
+import Category from '@/components/Category.vue'
 
 export default {
-  data() {
-    return {};
+  data () {
+    return {}
   },
   components: {
     Banner,
-    Category,
-  },
-};
+    Category
+  }
+}
 </script>
