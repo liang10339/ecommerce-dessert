@@ -1,6 +1,6 @@
 # ecommerce-dessert
 
-## Intro
+## :pen: Intro
 
 An E Commerce Web using Vue.js
 
