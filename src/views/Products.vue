@@ -5,12 +5,7 @@
       <div class="row" v-if="products.length > 0">
         <div class="col-lg-2 col-md-3 mb-2">
           <ul class="list-group rounded-0">
-            <a
-              href="#"
-              class="list-group-item list-group-item-action"
-              @click.prevent="filterCategory = ''"
-              :class="{ active: filterCategory === '' }"
-            >全部商品</a>
+            <a href="#" class="list-group-item list-group-item-action" @click.prevent="filterCategory = ''" :class="{ active: filterCategory === '' }">全部商品</a>
             <a
               class="list-group-item list-group-item-action"
               href="#"
