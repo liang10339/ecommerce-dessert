@@ -1,10 +1,12 @@
 # ecommerce-dessert
 
-## Intro
+## :pen: Intro
 
 An E Commerce Web using Vue.js
 
-## :link: Demo : https://liang10339.github.io/ecommerce-dessert/#/
+## :link: Demo
+
+https://liang10339.github.io/ecommerce-dessert/#/
 
 ## ⛏️ Tools
 - Vue.js 2.6.11
@@ -21,7 +23,7 @@ An E Commerce Web using Vue.js
 ### 消費者
 - [x] 瀏覽所有商品
 - [x] 瀏覽分類商品
-- [ ] 瀏覽單一商品
+- [x] 瀏覽單一商品
 - [ ] 將商品加入購物車
 - [ ] 將購物車內商品結帳
 - [ ] 結帳前驗證訂單
