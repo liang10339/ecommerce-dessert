@@ -113,7 +113,22 @@ export default {
         this.filterCategory = categoryName
       }
     },
-    addToCart () {}
+    addToCart (id, quantity = 1) {
+      const vm = this
+      vm.status.loadingItem = id
+      vm.isProcessing = true
+      fire.database().ref('cart').set({
+        product: id,
+        quantity: quantity
+      })
+      this.$bus.$emit('update-total')
+      Toast.fire({
+        title: '已加入購物車',
+        icon: 'success'
+      })
+      this.status.loadingItem = ''
+      this.isProcessing = false
+    }
   },
 
   computed: {
