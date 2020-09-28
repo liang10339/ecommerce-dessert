@@ -19,12 +19,8 @@
             <li class="nav-item">
               <router-link to="/products" class="nav-link text-white">商品列表</router-link>
             </li>
-          </ul>
-          <ul class="navbar-nav">
             <li class="nav-item">
-              <router-link to="/cart" class="nav-link text-white">
-                <!-- <Cart /> -->
-              </router-link>
+              <router-link to="/cart" class="nav-link text-white">購物車</router-link>
             </li>
           </ul>
         </div>
@@ -34,14 +30,10 @@
 </template>
 
 <script>
-// import Cart from "./Cart.vue";
 
 export default {
   data () {
     return {}
-  },
-  components: {
-    // Cart,
   }
 }
 </script>
