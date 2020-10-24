@@ -50,6 +50,7 @@
                     @click.prevent="addToCart(item.id)"
                     :disabled="isProcessing"
                   >
+                    <i class="fas fa-plus"></i>
                     <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i>
                     <i v-else class="fa fa-cart-plus" aria-hidden="true"></i>
                     加到購物車
@@ -90,24 +91,21 @@ export default {
     getProducts () {
       const vm = this
       const products = []
-      fire
-        .database()
-        .ref('data')
-        .once('value', function (snapshot) {
-          if (snapshot.exists()) {
-            // this.products = Object.keys(snapshot.val());
-            snapshot.forEach(function (d) {
-              products.push(d.val())
-            })
-            vm.products = products
-          } else {
-            Toast.fire({
-              title: '無法取得資料，稍後再試',
-              icon: 'error'
-            })
-            this.isLoading = false
-          }
-        })
+      fire.database().ref('data').once('value', function (snapshot) {
+        if (snapshot.exists()) {
+          // this.products = Object.keys(snapshot.val());
+          snapshot.forEach(function (d) {
+            products.push(d.val())
+          })
+          vm.products = products
+        } else {
+          Toast.fire({
+            title: '無法取得資料，稍後再試',
+            icon: 'error'
+          })
+          this.isLoading = false
+        }
+      })
       const { categoryName } = this.$route.params
       if (categoryName) {
         this.filterCategory = categoryName
@@ -117,17 +115,27 @@ export default {
       const vm = this
       vm.status.loadingItem = id
       vm.isProcessing = true
-      fire.database().ref('cart').set({
-        product: id,
-        quantity: quantity
+
+      fire.database().ref('cart').once('value', function (snapshot) {
+        if (!snapshot.child(id).exists()) {
+          fire.database().ref('cart').child(id).set({
+            product: id,
+            quantity: quantity
+          })
+          vm.$bus.$emit('update-total')
+          Toast.fire({
+            title: '已加入購物車',
+            icon: 'success'
+          })
+        } else {
+          Toast.fire({
+            title: '此商品已加入購物車',
+            icon: 'error'
+          })
+          vm.status.loadingItem = ''
+          vm.isProcessing = false
+        }
       })
-      this.$bus.$emit('update-total')
-      Toast.fire({
-        title: '已加入購物車',
-        icon: 'success'
-      })
-      this.status.loadingItem = ''
-      this.isProcessing = false
     }
   },
 
@@ -135,9 +143,7 @@ export default {
     filterCategories () {
       if (this.filterCategory) {
         return this.products.filter((item) => {
-          const data = item.category
-            .toLowerCase()
-            .includes(this.filterCategory.toLowerCase())
+          const data = item.category.toLowerCase().includes(this.filterCategory.toLowerCase())
           return data
         })
       }
